@@ -1,0 +1,20 @@
+{% extends 'PortfolioApp/base.html'%}
+
+{% block content %}
+
+<div class='container text-center'>
+  <h1>Portfolio Blog</h1>
+  </br>
+  </br>
+  <h5>There are currently {{ posts.count }} post{{ posts.count|pluralize }} in this blog.<h5>
+  </br>
+  {% for post in posts %}
+    <a href='{% url 'BlogApp:post' post.id %}'><h3>{{ post.subject }}</h3></a>
+    {{ post.datePosted}}
+    </br>
+    </br>
+    <p>{{ post.text|striptags|truncatechars:100 }}</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
